@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BITWAVE GLOBAL</title>
+
+<style>
+body {
+margin:0;
+font-family:Arial;
+background:#0b0b0f;
+color:white;
+}
+
+header {
+display:flex;
+justify-content:space-between;
+padding:15px 20px;
+background:#111;
+position:sticky;
+top:0;
+}
+
+header h1 {
+color:gold;
+font-size:20px;
+}
+
+nav button {
+margin-left:10px;
+padding:8px 15px;
+border:none;
+cursor:pointer;
+background:gold;
+color:black;
+font-weight:bold;
+border-radius:5px;
+}
+
+section {
+padding:40px 20px;
+}
+
+.hero {
+text-align:center;
+padding:60px 20px;
+background:linear-gradient(45deg,#111,#1a1a1a);
+}
+
+.hero h2 {
+color:gold;
+font-size:32px;
+}
+
+.cards {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.card {
+background:#1c1c1c;
+padding:20px;
+border-radius:10px;
+border:1px solid gold;
+}
+
+.button {
+background:gold;
+color:black;
+padding:12px 20px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.trade-box {
+margin-top:20px;
+padding:20px;
+background:#111;
+border:1px solid gold;
+border-radius:10px;
+}
+
+footer {
+text-align:center;
+padding:20px;
+color:#aaa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>BITWAVE GLOBAL</h1>
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('topup')">Top Up</button>
+<button onclick="show('dashboard')">Dashboard</button>
+</nav>
+</header>
+
+<!-- HOME -->
+<section id="home">
+
+<div class="hero">
+<h2>AI Trading Platform</h2>
+<p>Professional Digital Asset Trading Experience</p>
+</div>
+
+<div class="cards">
+<div class="card">Minimum Deposit: $250</div>
+<div class="card">Withdrawal Time: 24 Hours</div>
+<div class="card">Daily ROI: 10% - 15% (Market Based)</div>
+<div class="card">5 Level Income System</div>
+<div class="card">VIP Weekly Bonus</div>
+<div class="card">Club Income (Coming Soon)</div>
+</div>
+
+<div class="trade-box">
+<h3>Live Market Demo Chart</h3>
+<p>Simulated market movement (UI only)</p>
+<canvas id="chart" width="300" height="120"></canvas>
+</div>
+
+<br>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSc12TOIorVIlTCnFkK0jdlkpymGIKwQoXpFery67oG4Yd1Zxg/viewform?usp=dialog">
+<button class="button">Start Now</button>
+</a>
+
+</section>
+
+<!-- TOPUP -->
+<section id="topup" style="display:none;">
+<h2>Top Up / Re-Deposit</h2>
+<p>Complete your deposit form below</p>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSeIE7FoT77E4l3j-BIZ0c32Rl47URYqvy5jVhRj8Cw0-8C5Ow/viewform?usp=dialog">
+<button class="button">Open Top Up Form</button>
+</a>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" style="display:none;">
+<h2>User Dashboard</h2>
+
+<p>Click below to join Telegram</p>
+
+<a href="https://t.me/+_ZBOnti4gOhhYjFl" target="_blank">
+<button class="button">Open Telegram</button>
+</a>
+
+<p style="margin-top:20px;color:#aaa;">
+After joining, follow instructions inside the group.
+</p>
+</section>
+
+<footer>
+© BITWAVE GLOBAL
+</footer>
+
+<script>
+function show(page){
+document.getElementById('home').style.display='none';
+document.getElementById('topup').style.display='none';
+document.getElementById('dashboard').style.display='none';
+document.getElementById(page).style.display='block';
+}
+
+// SIMPLE LIVE CHART ANIMATION
+let c = document.getElementById("chart");
+let ctx = c.getContext("2d");
+
+let data = [10,20,15,30,25,40,35];
+
+function draw(){
+ctx.clearRect(0,0,300,120);
+ctx.beginPath();
+ctx.strokeStyle="gold";
+
+for(let i=0;i<data.length;i++){
+let x=i*45;
+let y=120-data[i];
+ctx.lineTo(x,y);
+}
+
+ctx.stroke();
+
+data.shift();
+data.push(Math.floor(Math.random()*50)+10);
+}
+
+setInterval(draw,1000);
+</script>
+
+</body>
+</html>
