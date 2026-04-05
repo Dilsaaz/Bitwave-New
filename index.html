@@ -6,89 +6,138 @@
 <title>BITWAVE GLOBAL</title>
 
 <style>
-body {
+body{
 margin:0;
 font-family:Arial;
-background:#0b0b0f;
+background:linear-gradient(135deg,#05070f,#0b0b1a,#111);
 color:white;
 }
 
-header {
+/* HEADER */
+header{
 display:flex;
 justify-content:space-between;
+align-items:center;
 padding:15px 20px;
-background:#111;
+background:#0f0f1a;
 position:sticky;
 top:0;
+border-bottom:1px solid gold;
 }
 
-header h1 {
+header h1{
 color:gold;
-font-size:20px;
+letter-spacing:2px;
 }
 
-nav button {
+/* NAV BUTTONS */
+nav button{
 margin-left:10px;
-padding:8px 15px;
+padding:8px 14px;
 border:none;
+border-radius:6px;
 cursor:pointer;
-background:gold;
-color:black;
 font-weight:bold;
-border-radius:5px;
 }
 
-section {
-padding:40px 20px;
-}
+.gold{background:gold;color:black;}
+.blue{background:#2b6fff;color:white;}
+.dark{background:#222;color:white;}
 
-.hero {
+/* SECTIONS */
+section{padding:40px 20px;}
+
+/* HERO */
+.hero{
 text-align:center;
-padding:60px 20px;
-background:linear-gradient(45deg,#111,#1a1a1a);
+padding:70px 20px;
+background:radial-gradient(circle,#1a1a2e,#05060c);
+border-bottom:1px solid gold;
 }
 
-.hero h2 {
+.hero h2{
 color:gold;
-font-size:32px;
+font-size:36px;
 }
 
-.cards {
+.hero p{
+color:#ccc;
+}
+
+/* CARDS */
+.cards{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:15px;
-margin-top:20px;
+margin-top:25px;
 }
 
-.card {
-background:#1c1c1c;
-padding:20px;
+.card{
+background:#141428;
+padding:18px;
 border-radius:10px;
-border:1px solid gold;
+border:1px solid #333;
 }
 
-.button {
-background:gold;
-color:black;
+/* BUTTON */
+.btn{
 padding:12px 20px;
 border:none;
-border-radius:5px;
+border-radius:8px;
 cursor:pointer;
 font-weight:bold;
+background:linear-gradient(90deg,gold,orange);
+color:black;
+margin-top:10px;
 }
 
-.trade-box {
+/* SLIDER */
+.slider{
 margin-top:20px;
-padding:20px;
+padding:15px;
 background:#111;
 border:1px solid gold;
 border-radius:10px;
+overflow:hidden;
+white-space:nowrap;
 }
 
-footer {
+.coin{
+display:inline-block;
+margin-right:40px;
+color:#00ffcc;
+font-weight:bold;
+animation:move 8s linear infinite;
+}
+
+@keyframes move{
+0%{transform:translateX(100%);}
+100%{transform:translateX(-100%);}
+}
+
+/* FORM */
+input{
+padding:10px;
+width:80%;
+margin-top:10px;
+border-radius:6px;
+border:none;
+}
+
+.form-box{
+background:#141428;
+padding:20px;
+border-radius:10px;
+border:1px solid gold;
+max-width:500px;
+}
+
+/* FOOTER */
+footer{
 text-align:center;
 padding:20px;
-color:#aaa;
+color:#777;
+margin-top:40px;
 }
 </style>
 </head>
@@ -98,9 +147,9 @@ color:#aaa;
 <header>
 <h1>BITWAVE GLOBAL</h1>
 <nav>
-<button onclick="show('home')">Home</button>
-<button onclick="show('topup')">Top Up</button>
-<button onclick="show('dashboard')">Dashboard</button>
+<button class="gold" onclick="show('home')">Home</button>
+<button class="blue" onclick="show('retopup')">Re-Top Up Wallet</button>
+<button class="dark" onclick="show('telegram')">Telegram</button>
 </nav>
 </header>
 
@@ -108,93 +157,99 @@ color:#aaa;
 <section id="home">
 
 <div class="hero">
-<h2>AI Trading Platform</h2>
-<p>Professional Digital Asset Trading Experience</p>
+<h2>AI Trading Ecosystem</h2>
+<p>Advanced Digital Asset Platform</p>
+<button class="btn" onclick="show('retopup')">Start Now</button>
 </div>
 
 <div class="cards">
 <div class="card">Minimum Deposit: $250</div>
 <div class="card">Withdrawal Time: 24 Hours</div>
-<div class="card">Daily ROI: 10% - 15% (Market Based)</div>
+<div class="card">Daily ROI: 10% - 15%</div>
 <div class="card">5 Level Income System</div>
 <div class="card">VIP Weekly Bonus</div>
 <div class="card">Club Income (Coming Soon)</div>
 </div>
 
-<div class="trade-box">
-<h3>Live Market Demo Chart</h3>
-<p>Simulated market movement (UI only)</p>
-<canvas id="chart" width="300" height="120"></canvas>
+<!-- COIN SLIDER -->
+<div class="slider">
+<div class="coin">BTC ↑ 42,500</div>
+<div class="coin">ETH ↑ 2,300</div>
+<div class="coin">BNB ↑ 310</div>
+<div class="coin">SOL ↑ 98</div>
+<div class="coin">XRP ↑ 0.58</div>
 </div>
 
-<br>
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSc12TOIorVIlTCnFkK0jdlkpymGIKwQoXpFery67oG4Yd1Zxg/viewform?usp=dialog">
-<button class="button">Start Now</button>
-</a>
-
 </section>
 
-<!-- TOPUP -->
-<section id="topup" style="display:none;">
-<h2>Top Up / Re-Deposit</h2>
-<p>Complete your deposit form below</p>
+<!-- RE TOP UP -->
+<section id="retopup" style="display:none;">
+
+<h2>Re-Top Up Wallet</h2>
+
+<div class="form-box">
+
+<p>Enter your User ID</p>
+
+<input type="text" id="userid" placeholder="Enter User ID">
+
+<br>
+
+<button class="btn" onclick="sendTelegram()">Submit</button>
+
+</div>
+
+<br><br>
 
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIE7FoT77E4l3j-BIZ0c32Rl47URYqvy5jVhRj8Cw0-8C5Ow/viewform?usp=dialog">
-<button class="button">Open Top Up Form</button>
+<button class="btn">Open Re-Top Up Form</button>
 </a>
+
 </section>
 
-<!-- DASHBOARD -->
-<section id="dashboard" style="display:none;">
-<h2>User Dashboard</h2>
+<!-- TELEGRAM -->
+<section id="telegram" style="display:none;">
 
-<p>Click below to join Telegram</p>
+<h2>Join Telegram</h2>
 
-<a href="https://t.me/+_ZBOnti4gOhhYjFl" target="_blank">
-<button class="button">Open Telegram</button>
+<p>Click below to join official group</p>
+
+<a href="https://t.me/Bitwave1">
+<button class="btn">Join Telegram</button>
 </a>
 
-<p style="margin-top:20px;color:#aaa;">
-After joining, follow instructions inside the group.
-</p>
 </section>
 
 <footer>
-© BITWAVE GLOBAL
+© BITWAVE GLOBAL - AI Trading Ecosystem
 </footer>
 
 <script>
+
 function show(page){
 document.getElementById('home').style.display='none';
-document.getElementById('topup').style.display='none';
-document.getElementById('dashboard').style.display='none';
+document.getElementById('retopup').style.display='none';
+document.getElementById('telegram').style.display='none';
 document.getElementById(page).style.display='block';
 }
 
-// SIMPLE LIVE CHART ANIMATION
-let c = document.getElementById("chart");
-let ctx = c.getContext("2d");
+/* TELEGRAM MESSAGE FUNCTION */
+function sendTelegram(){
 
-let data = [10,20,15,30,25,40,35];
+let id = document.getElementById("userid").value;
 
-function draw(){
-ctx.clearRect(0,0,300,120);
-ctx.beginPath();
-ctx.strokeStyle="gold";
-
-for(let i=0;i<data.length;i++){
-let x=i*45;
-let y=120-data[i];
-ctx.lineTo(x,y);
+if(id==""){
+alert("Please enter User ID");
+return;
 }
 
-ctx.stroke();
+let msg = "Hello, I am a BITWAVE GLOBAL user. My account details are ready. Please send my account information.";
 
-data.shift();
-data.push(Math.floor(Math.random()*50)+10);
+let url = "https://t.me/Bitwave1?text=" + encodeURIComponent(msg);
+
+window.open(url,"_blank");
 }
 
-setInterval(draw,1000);
 </script>
 
 </body>
